@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="uz">
-
+>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -278,6 +278,65 @@ footer {
     margin-top: 10px;
   }
 }
+.blog-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: 0.3s;
+  z-index: 999;
+}
+
+.blog-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.modal-content .close-btn {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.modal-date {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.modal-body p {
+  margin-bottom: 14px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.7;
+}
 
   </style>
 </head>
@@ -397,7 +456,7 @@ footer {
   </div>
 
   <script>
-    // ===== 🌐 Til sozlamalari =====
+   // ===== 🌐 Til sozlamalari =====
 const translations = {
   uz: {
     navHome: "Bosh sahifa",
@@ -515,8 +574,123 @@ themeToggle.addEventListener("click", () => {
 // Avvalgi rejimni o‘rnatish
 if (currentTheme === "dark") themeToggle.textContent = "☀️";
 else themeToggle.textContent = "🌙";
+// ===== ✍️ Blog bo‘limi funksiyasi =====
+const blogPosts = {
+  1: {
+    title_uz: "SMMda sun’iy intellektning roli",
+    title_ru: "Роль искусственного интеллекта в SMM",
+    date: "24-oktabr 2025",
+    content_uz: `
+      <p>Bugungi kunda sun’iy intellekt (AI) SMM jarayonining ajralmas qismiga aylanmoqda. 
+      AI yordamida siz kontent yozishni tezlashtirishingiz, post g‘oyalarini avtomatik tahlil qilishingiz 
+      va auditoriya uchun eng samarali vaqtni aniqlashingiz mumkin.</p>
+      <p>Masalan, ChatGPT yordamida sarlavhalar va captionlar yozish, 
+      Canva Magic Write yordamida dizayn g‘oyalarini generatsiya qilish, 
+      yoki Metricool orqali kontent natijalarini AI yordamida tahlil qilish mumkin.</p>
+      <p><strong>Xulosa:</strong> AI — bu SMM menejer uchun raqobat ustunligi, lekin 
+      inson kreativligi har doim birinchi o‘rinda turadi.</p>
+    `,
+    content_ru: `
+      <p>Сегодня искусственный интеллект (AI) стал неотъемлемой частью SMM. 
+      Он помогает ускорять написание контента, анализировать идеи постов 
+      и подбирать лучшее время для публикаций.</p>
+      <p>Например, с помощью ChatGPT можно писать тексты, 
+      Canva Magic Write — генерировать дизайн-идеи, 
+      а Metricool — анализировать эффективность контента.</p>
+      <p><strong>Вывод:</strong> AI — конкурентное преимущество для SMM-менеджера, 
+      но человеческое творчество всегда на первом месте.</p>
+    `
+  },
+  2: {
+    title_uz: "Telegram reklama strategiyalari",
+    title_ru: "Стратегии рекламы в Telegram",
+    date: "15-oktabr 2025",
+    content_uz: `
+      <p>Telegram — bu O‘zbekistondagi eng samarali reklama platformalaridan biri. 
+      To‘g‘ri targeting va CPA monitoring orqali siz auditoriyani 10 baravar tezroq jalb qilishingiz mumkin.</p>
+      <p>Asosiy bosqichlar: 
+      1) maqsadli kanal tanlash, 
+      2) reklama formatini aniqlash (banner, native post, pinned), 
+      3) natijalarni tahlil qilish.</p>
+      <p><strong>Maslahat:</strong> CTR 3% dan yuqori bo‘lsa — reklama juda yaxshi ishlayapti degani.</p>
+    `,
+    content_ru: `
+      <p>Telegram — одна из самых эффективных рекламных платформ в Узбекистане. 
+      С правильным таргетингом и CPA-мониторингом можно привлечь аудиторию в 10 раз быстрее.</p>
+      <p>Основные шаги:
+      1) выбор целевого канала,
+      2) определение формата рекламы (баннер, нативный пост, закреп),
+      3) анализ результатов.</p>
+      <p><strong>Совет:</strong> Если CTR выше 3% — это отличный показатель эффективности рекламы.</p>
+    `
+  },
+  3: {
+    title_uz: "Kontent reja tuzish sirlari",
+    title_ru: "Секреты контент-плана",
+    date: "10-oktabr 2025",
+    content_uz: `
+      <p>Yaxshi kontent reja — bu SMM muvaffaqiyatining 70% qismi. 
+      Har oy uchun maqsadli mavzular, CTA, va post formatlarini oldindan belgilash muhim.</p>
+      <p>Notion, ClickUp yoki AI asosidagi rejalashtirish vositalari bu jarayonni osonlashtiradi. 
+      Shuningdek, har 7 kunda kontentni tahlil qilib, natijalarga qarab strategiyani yangilab borish kerak.</p>
+      <p><strong>Formula:</strong> Reja + Tahlil + Moslashuv = Barqaror o‘sish 📈</p>
+    `,
+    content_ru: `
+      <p>Хороший контент-план — это 70% успеха в SMM. 
+      Важно заранее определить темы, CTA и форматы публикаций на месяц вперёд.</p>
+      <p>Инструменты вроде Notion, ClickUp и AI-сервисов делают процесс проще. 
+      Каждую неделю анализируйте контент и обновляйте стратегию на основе результатов.</p>
+      <p><strong>Формула:</strong> План + Анализ + Адаптация = Стабильный рост 📈</p>
+    `
+  }
+};
+
+// DOM elementlar
+const blogGrid = document.querySelector(".blog-grid");
+const container = document.querySelector(".container");
+
+// Modal element yaratamiz
+const modal = document.createElement("div");
+modal.className = "blog-modal";
+modal.innerHTML = `
+  <div class="modal-content">
+    <button class="close-btn">←</button>
+    <h2 class="modal-title"></h2>
+    <p class="modal-date"></p>
+    <div class="modal-body"></div>
+  </div>
+`;
+document.body.appendChild(modal);
+
+// Blogni bosilganda ochish
+blogGrid.addEventListener("click", e => {
+  if (e.target.classList.contains("read-btn")) {
+    e.preventDefault();
+    const article = e.target.closest("article");
+    const index = [...blogGrid.children].indexOf(article) + 1;
+    openPost(index);
+  }
+});
+
+function openPost(id) {
+  const lang = localStorage.getItem("lang") || "uz";
+  const post = blogPosts[id];
+  if (!post) return;
+
+  modal.querySelector(".modal-title").innerHTML = post[`title_${lang}`];
+  modal.querySelector(".modal-date").innerHTML = post.date;
+  modal.querySelector(".modal-body").innerHTML = post[`content_${lang}`];
+
+  modal.classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+
+// Yopish tugmasi
+modal.querySelector(".close-btn").addEventListener("click", () => {
+  modal.classList.remove("show");
+  document.body.style.overflow = "auto";
+});
 
   </script>
 </body>
 </html>
-
