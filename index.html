@@ -1,219 +1,521 @@
 <!doctype html>
 <html lang="uz">
+>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Zokirov Shuxratjon — SMM & Kopirayter Portfoliosi</title>
-  <meta name="description" content="Zokirov Shuxratjon — SMM menejeri va kopirayter. Targeting, AI vositalari, kontent strategiyasi va portfoliolar.">
+  <title>Zokirov Shuxratjon — SMM & Kopirayter Portfolio</title>
+  <meta name="description" content="Zokirov Shuxratjon — SMM menejeri va kopirayter. Targeting, AI vositalari, kontent strategiyasi va blog maqolalar.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --accent:#ef5123;
-      --bg:#ffffff;
-      --muted:#6b6b6b;
-      --dark:#0f1720;
-      --radius:14px;
-      --shadow:0 10px 30px rgba(0,0,0,0.08);
-    }
-    *{box-sizing:border-box;margin:0;padding:0;transition:all .25s ease;}
-    body{
-      font-family:'Inter',sans-serif;
-      background:#fafafa;
-      color:var(--dark);
-      line-height:1.6;
-    }
-    a{text-decoration:none;color:var(--accent);}
-    a:hover{opacity:.8;}
+    :root {
+  --accent: #ef5123;
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
 
-    /* Layout */
-    .container{max-width:1000px;margin:auto;padding:30px 20px;}
+[data-theme="dark"] {
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --card-bg: #1e293b;
+  --shadow: 0 6px 18px rgba(239,81,35,0.25);
+}
 
-    /* Header */
-    header{display:flex;justify-content:space-between;align-items:center;margin-bottom:40px;flex-wrap:wrap;}
-    header h1{font-size:20px;color:var(--dark);}
-    nav a{margin-left:14px;color:var(--dark);font-weight:600;font-size:14px;position:relative;}
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:0;bottom:-3px;
-      width:0;height:2px;
-      background:var(--accent);
-      transition:.25s;
-    }
-    nav a:hover::after{width:100%;}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
 
-    /* Hero */
-    .hero{
-      display:grid;grid-template-columns:1fr 280px;gap:40px;align-items:center;margin-bottom:60px;
-    }
-    .hero-text h2{font-size:28px;margin-bottom:10px;}
-    .hero-text p{color:var(--muted);font-size:15px;}
-    .hero img{
-      width:250px;height:250px;object-fit:cover;
-      border-radius:50%;box-shadow:var(--shadow);
-      display:block;margin:auto;
-      transform:scale(1);transition:.3s ease;
-    }
-    .hero img:hover{transform:scale(1.05);}
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
 
-    .cv-btn{
-      display:inline-block;
-      margin-top:20px;
-      background:var(--accent);
-      color:#fff;
-      padding:10px 18px;
-      border-radius:10px;
-      font-weight:600;
-      box-shadow:0 6px 15px rgba(239,81,35,0.3);
-    }
-    .cv-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(239,81,35,0.4);}
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px 20px;
+}
 
-    /* Sections */
-    section{
-      background:#fff;
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:30px;
-      margin-bottom:30px;
-    }
-    section h3{
-      font-size:20px;color:var(--accent);
-      margin-bottom:12px;
-    }
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
 
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:10px;}
-    .skill{
-      background:#fff0ea;
-      padding:8px 14px;border-radius:999px;
-      font-size:14px;font-weight:600;
-    }
-    .skill:hover{background:var(--accent);color:#fff;}
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+}
 
-    /* Projects */
-    .projects{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:16px;
-    }
-    .project{
-      background:#fff;border:1px solid #eee;
-      border-radius:var(--radius);
-      padding:16px;
-      transition:transform .3s, box-shadow .3s;
-    }
-    .project:hover{
-      transform:translateY(-5px);
-      box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    }
-    .project h4{margin-bottom:8px;}
-    .project p{font-size:14px;color:var(--muted);}
+nav a {
+  margin: 0 12px;
+  color: var(--text);
+  font-weight: 600;
+  position: relative;
+  text-decoration: none;
+}
 
-    /* Contact */
-    .contact p{color:var(--muted);margin-bottom:8px;}
-    .contact a{
-      display:inline-block;
-      background:var(--accent);
-      color:#fff;
-      padding:10px 16px;
-      border-radius:10px;
-      font-weight:600;
-      margin-top:10px;
-    }
-    .contact a:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(239,81,35,0.3);}
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s;
+}
 
-    footer{
-      text-align:center;color:var(--muted);
-      font-size:13px;padding:20px 0;margin-top:20px;
-    }
+nav a:hover::after {
+  width: 100%;
+}
 
-    @media(max-width:800px){
-      .hero{grid-template-columns:1fr;text-align:center;}
-      nav{width:100%;text-align:center;margin-top:10px;}
-    }
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.controls button {
+  border: none;
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 8px;
+  padding: 6px 10px;
+  box-shadow: var(--shadow);
+}
+
+.controls button:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+.hero-text h1 {
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+
+.hero-text p {
+  color: var(--muted);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.hero-img img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+  display: block;
+  margin: auto;
+  transform: scale(1);
+}
+
+.hero-img img:hover {
+  transform: scale(1.05);
+}
+
+.cv-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(239,81,35,0.4);
+}
+
+.cv-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(239,81,35,0.5);
+}
+
+/* Sections */
+section {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+}
+
+section h2 {
+  font-size: 22px;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skills span {
+  background: rgba(239,81,35,0.1);
+  color: var(--text);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.skills span:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* Projects */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.projects article {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.projects article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.projects h3 {
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.projects p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Blog */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.blog-grid article {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-grid article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(239,81,35,0.2);
+}
+
+.read-btn {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.read-btn:hover {
+  opacity: 0.8;
+}
+
+/* Contact */
+#contact a.cv-btn {
+  margin-top: 10px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  nav {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
   </style>
 </head>
+
 <body>
   <div class="container">
+
+    <!-- Header -->
     <header>
-      <h1>Zokirov Shuxratjon</h1>
-      <nav>
-        <a href="#home">Bosh sahifa</a>
-        <a href="#about">Men haqimda</a>
-        <a href="#skills">Ko‘nikmalar</a>
-        <a href="#projects">Loyihalar</a>
-        <a href="#contact">Aloqa</a>
+      <div class="logo">ZS</div>
+      <nav id="navbar">
+        <a href="#home" data-key="navHome">Bosh sahifa</a>
+        <a href="#about" data-key="navAbout">Men haqimda</a>
+        <a href="#skills" data-key="navSkills">Ko‘nikmalar</a>
+        <a href="#projects" data-key="navProjects">Loyihalar</a>
+        <a href="#blog" data-key="navBlog">Blog</a>
+        <a href="#contact" data-key="navContact">Aloqa</a>
       </nav>
+
+      <div class="controls">
+        <button id="langBtn">🇺🇿</button>
+        <button id="themeToggle">🌙</button>
+      </div>
     </header>
 
+    <!-- Hero -->
     <main id="home" class="hero">
       <div class="hero-text">
-        <h2>Assalomu alaykum, men Zokirov Shuxratjonman 👋</h2>
-        <p>SMM menejeri va kopirayterman.  
-        Brendlar uchun kontent strategiyasi, targeting, AI vositalari va sotuv tizimlari bilan ishlayman.</p>
-        <p style="margin-top:10px;">Tajriba: 3 yil kopirayting, 2 yil SMM.  
-        Loyiha tajribam: <strong>Bookblog, texnomuxlis.uz, SamISI yoshlari, Registan LC Samarkand</strong>.</p>
-
-        <!-- CV yuklab olish tugmasi -->
-        <a href="cv_shuxratjon.docx" class="cv-btn" download>📄 CV yuklab olish</a>
+        <h1 data-key="heroTitle">Assalomu alaykum, men Zokirov Shuxratjonman 👋</h1>
+        <p data-key="heroDesc">SMM menejeri va kopirayterm. Brendlar uchun kontent strategiyasi, targeting, AI vositalari va sotuv tizimlari bilan ishlayman.</p>
+        <a href="cv_shuxratjon.docx" class="cv-btn" download data-key="cvBtn">📄 CV yuklab olish</a>
       </div>
-
-      <img src="a6666fcf-f0fc-4d5d-9801-27f4225d55dd.png" alt="Zokirov Shuxratjon surati">
+      <div class="hero-img">
+        <img src="a6666fcf-f0fc-4d5d-9801-27f4225d55dd.png" alt="Zokirov Shuxratjon surati">
+      </div>
     </main>
 
+    <!-- About -->
     <section id="about">
-      <h3>Men haqimda</h3>
-      <p>Ismim <strong>Zokirov Shuxratjon Sherzodovich</strong>. Kopirayting sohasida 3 yillik, SMM yo‘nalishida esa 2 yillik tajribam bor.  
-      Men kontent yaratishdan tashqari brend maqsadini aniqlab, strategik yo‘nalishlar ishlab chiqaman. Telegram ADS targeting, AI avtomatizatsiyasi va loyihalar boshqaruvi sohasida faol ishlayman.</p>
+      <h2 data-key="aboutTitle">Men haqimda</h2>
+      <p data-key="aboutText">
+        Ismim Zokirov Shuxratjon Sherzodovich. Kopirayting sohasida 3 yillik, SMM yo‘nalishida esa 2 yillik tajribam bor.
+        Men kontent yaratishdan tashqari brend maqsadini aniqlab, strategik yo‘nalishlar ishlab chiqaman.
+        Telegram ADS targeting, AI avtomatizatsiyasi va loyihalar boshqaruvi sohasida faol ishlayman.
+      </p>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
-      <h3>Ko‘nikmalar</h3>
+      <h2 data-key="skillsTitle">Ko‘nikmalar</h2>
       <div class="skills">
-        <div class="skill">Kopirayting</div>
-        <div class="skill">SMM strategiya</div>
-        <div class="skill">Targeting (Telegram ADS)</div>
-        <div class="skill">AI vositalari</div>
-        <div class="skill">Zapusk va kampaniya boshqaruvi</div>
-        <div class="skill">Notion / Canva / CapCut</div>
-        <div class="skill">Instagram, Telegram, YouTube</div>
-        <div class="skill">Analitika va reporting</div>
+        <span>Kopirayting</span>
+        <span>SMM strategiya</span>
+        <span>Targeting (Telegram ADS)</span>
+        <span>AI vositalari</span>
+        <span>Zapusk va kampaniya boshqaruvi</span>
+        <span>Notion / Canva / CapCut</span>
+        <span>Instagram, Telegram, YouTube</span>
+        <span>Analitika va reporting</span>
       </div>
     </section>
 
+    <!-- Projects -->
     <section id="projects">
-      <h3>Loyihalar</h3>
+      <h2 data-key="projectsTitle">Loyihalar</h2>
       <div class="projects">
-        <div class="project">
-          <h4>Bookblog</h4>
-          <p>Kontent strategiyasi, post yozish, o‘sish tahlili va auditoriya bilan aloqani rivojlantirish.</p>
-        </div>
-        <div class="project">
-          <h4>texnomuxlis.uz</h4>
-          <p>Texnologik ta’lim loyihasi uchun SMM va reklama kampaniyalarini boshqarish.</p>
-        </div>
-        <div class="project">
-          <h4>SamISI yoshlari</h4>
-          <p>Talabalar va yoshlar uchun media kontent, ijtimoiy tarmoqlarda faol brend yaratish.</p>
-        </div>
-        <div class="project">
-          <h4>Registon ta’lim loyihasi</h4>
-          <p>Marketing strategiyasi, targeting va sotuvga yo‘naltirilgan kampaniyalar.</p>
-        </div>
+        <article>
+          <h3>Bookblog</h3>
+          <p data-key="project1">Kontent strategiyasi, post yozish, o‘sish tahlili va auditoriya bilan aloqani rivojlantirish.</p>
+        </article>
+        <article>
+          <h3>texnomuxlis.uz</h3>
+          <p data-key="project2">Texnologik ta’lim loyihasi uchun SMM va reklama kampaniyalarini boshqarish.</p>
+        </article>
+        <article>
+          <h3>SamISI yoshlari</h3>
+          <p data-key="project3">Talabalar va yoshlar uchun media kontent, ijtimoiy tarmoqlarda faol brend yaratish.</p>
+        </article>
       </div>
     </section>
 
-    <section id="contact" class="contact">
-      <h3>Aloqa</h3>
-      <p>Men bilan bevosita bog‘laning:</p>
+    <!-- Blog -->
+    <section id="blog">
+      <h2 data-key="blogTitle">Blog</h2>
+      <div class="blog-grid">
+        <article>
+          <h3 data-key="blog1Title">SMMda sun’iy intellektning roli</h3>
+          <p data-key="blog1Desc">AI vositalari yordamida kontent yaratish va reklama jarayonlarini avtomatlashtirish haqida.</p>
+          <a href="#" class="read-btn" data-key="readMore">Batafsil o‘qish</a>
+        </article>
+
+        <article>
+          <h3 data-key="blog2Title">Telegram reklama strategiyalari</h3>
+          <p data-key="blog2Desc">Auditoriyani to‘g‘ri tanlash va CPA natijalarni oshirish uchun foydali maslahatlar.</p>
+          <a href="#" class="read-btn" data-key="readMore">Batafsil o‘qish</a>
+        </article>
+
+        <article>
+          <h3 data-key="blog3Title">Kontent reja tuzish sirlari</h3>
+          <p data-key="blog3Desc">Notion va AI vositalari yordamida oyiga 30 postlik strategiya yaratish.</p>
+          <a href="#" class="read-btn" data-key="readMore">Batafsil o‘qish</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 data-key="contactTitle">Aloqa</h2>
       <p><strong>Telefon:</strong> +998 90 749 0870</p>
       <p><strong>Telegram:</strong> <a href="https://t.me/sies_admin" target="_blank">@sies_admin</a></p>
-      <a href="https://t.me/kopirayterjon" target="_blank">Kopirayting portfolio kanalni ko‘rish</a>
+      <a href="https://t.me/kopirayterjon" class="cv-btn" target="_blank" data-key="portfolioBtn">Portfolio kanalni ko‘rish</a>
     </section>
 
     <footer>
-      © 2025 Zokirov Shuxratjon — SMM menejeri & Kopirayter
+      <p>© 2025 Zokirov Shuxratjon — SMM menejeri & Kopirayter</p>
     </footer>
   </div>
+
+  <script>
+    // ===== 🌐 Til sozlamalari =====
+const translations = {
+  uz: {
+    navHome: "Bosh sahifa",
+    navAbout: "Men haqimda",
+    navSkills: "Ko‘nikmalar",
+    navProjects: "Loyihalar",
+    navBlog: "Blog",
+    navContact: "Aloqa",
+
+    heroTitle: "Assalomu alaykum, men Zokirov Shuxratjonman 👋",
+    heroDesc: "SMM menejeri va kopirayterm. Brendlar uchun kontent strategiyasi, targeting, AI vositalari va sotuv tizimlari bilan ishlayman.",
+    cvBtn: "📄 CV yuklab olish",
+
+    aboutTitle: "Men haqimda",
+    aboutText: "Ismim Zokirov Shuxratjon Sherzodovich. Kopirayting sohasida 3 yillik, SMM yo‘nalishida esa 2 yillik tajribam bor. Men kontent yaratishdan tashqari brend maqsadini aniqlab, strategik yo‘nalishlar ishlab chiqaman. Telegram ADS targeting, AI avtomatizatsiyasi va loyihalar boshqaruvi sohasida faol ishlayman.",
+
+    skillsTitle: "Ko‘nikmalar",
+    projectsTitle: "Loyihalar",
+    project1: "Kontent strategiyasi, post yozish, o‘sish tahlili va auditoriya bilan aloqani rivojlantirish.",
+    project2: "Texnologik ta’lim loyihasi uchun SMM va reklama kampaniyalarini boshqarish.",
+    project3: "Talabalar va yoshlar uchun media kontent, ijtimoiy tarmoqlarda faol brend yaratish.",
+
+    blogTitle: "Blog",
+    blog1Title: "SMMda sun’iy intellektning roli",
+    blog1Desc: "AI vositalari yordamida kontent yaratish va reklama jarayonlarini avtomatlashtirish haqida.",
+    blog2Title: "Telegram reklama strategiyalari",
+    blog2Desc: "Auditoriyani to‘g‘ri tanlash va CPA natijalarni oshirish uchun foydali maslahatlar.",
+    blog3Title: "Kontent reja tuzish sirlari",
+    blog3Desc: "Notion va AI vositalari yordamida oyiga 30 postlik strategiya yaratish.",
+    readMore: "Batafsil o‘qish",
+
+    contactTitle: "Aloqa",
+    portfolioBtn: "Portfolio kanalni ko‘rish"
+  },
+
+  ru: {
+    navHome: "Главная",
+    navAbout: "Обо мне",
+    navSkills: "Навыки",
+    navProjects: "Проекты",
+    navBlog: "Блог",
+    navContact: "Контакты",
+
+    heroTitle: "Здравствуйте, я Зокиров Шухратжон 👋",
+    heroDesc: "SMM-менеджер и копирайтер. Занимаюсь контент-стратегией брендов, таргетингом, AI-инструментами и системами продаж.",
+    cvBtn: "📄 Скачать резюме",
+
+    aboutTitle: "Обо мне",
+    aboutText: "Меня зовут Зокиров Шухратжон Шерзодович. У меня 3 года опыта в копирайтинге и 2 года в SMM. Я разрабатываю стратегии, управляю кампаниями и внедряю AI-инструменты для автоматизации маркетинга.",
+
+    skillsTitle: "Навыки",
+    projectsTitle: "Проекты",
+    project1: "Контент-стратегия, написание постов, анализ роста и взаимодействие с аудиторией.",
+    project2: "Управление SMM и рекламными кампаниями для образовательного проекта texnomuxlis.uz.",
+    project3: "Создание медиа-контента для молодежи и развитие бренда в соцсетях.",
+
+    blogTitle: "Блог",
+    blog1Title: "Роль искусственного интеллекта в SMM",
+    blog1Desc: "Как AI помогает автоматизировать создание контента и рекламные процессы.",
+    blog2Title: "Стратегии рекламы в Telegram",
+    blog2Desc: "Советы по выбору целевой аудитории и повышению CPA.",
+    blog3Title: "Секреты контент-плана",
+    blog3Desc: "Создание 30-дневной контент-стратегии с помощью Notion и AI.",
+    readMore: "Читать далее",
+
+    contactTitle: "Контакты",
+    portfolioBtn: "Смотреть портфолио-канал"
+  }
+};
+
+// ===== 🌙 Dark Mode sozlamasi =====
+const body = document.body;
+const themeToggle = document.getElementById("themeToggle");
+const langBtn = document.getElementById("langBtn");
+
+// Avvalgi tanlovni yuklash
+let currentLang = localStorage.getItem("lang") || "uz";
+let currentTheme = localStorage.getItem("theme") || "light";
+
+document.documentElement.setAttribute("lang", currentLang);
+if (currentTheme === "dark") body.setAttribute("data-theme", "dark");
+
+// === Til almashtirish funksiyasi ===
+function setLanguage(lang) {
+  const elements = document.querySelectorAll("[data-key]");
+  elements.forEach(el => {
+    const key = el.getAttribute("data-key");
+    if (translations[lang][key]) el.textContent = translations[lang][key];
+  });
+  langBtn.textContent = lang === "uz" ? "🇺🇿" : "🇷🇺";
+  localStorage.setItem("lang", lang);
+}
+
+langBtn.addEventListener("click", () => {
+  currentLang = currentLang === "uz" ? "ru" : "uz";
+  setLanguage(currentLang);
+});
+
+setLanguage(currentLang);
+
+// === Dark mode almashtirish ===
+themeToggle.addEventListener("click", () => {
+  const isDark = body.getAttribute("data-theme") === "dark";
+  if (isDark) {
+    body.removeAttribute("data-theme");
+    themeToggle.textContent = "🌙";
+    localStorage.setItem("theme", "light");
+  } else {
+    body.setAttribute("data-theme", "dark");
+    themeToggle.textContent = "☀️";
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+// Avvalgi rejimni o‘rnatish
+if (currentTheme === "dark") themeToggle.textContent = "☀️";
+else themeToggle.textContent = "🌙";
+
+  </script>
 </body>
 </html>
