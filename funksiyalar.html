@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Real vaqt va Easter Egg demo</title>
+<style>
+:root {
+  --bg: #fff;
+  --text: #222;
+  --accent: #ef5123;
+  --card-bg: #f9f9f9;
+  --shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+h1 {
+  color: var(--accent);
+  font-size: 2em;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+h1:hover {
+  transform: scale(1.03);
+}
+#realTime {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+footer {
+  position: absolute;
+  bottom: 20px;
+  color: var(--text);
+  opacity: 0.7;
+}
+</style>
+</head>
+<body>
+
+<h1 id="logo">Shuhratjon Zakirov — Portfolio</h1>
+<p id="realTime">Vaqt yuklanmoqda...</p>
+<footer>© 2025 | Demo sahifa</footer>
+
+<script>
+// === REAL VAQT ===
+function updateTime() {
+  const now = new Date();
+  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
+  const date = now.toLocaleDateString("uz-UZ", options);
+  const time = now.toLocaleTimeString("uz-UZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+  document.getElementById("realTime").textContent = `${time} | ${date}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// === EASTER EGG ===
+let pressTimer;
+const logo = document.getElementById("logo");
+
+logo.addEventListener("mousedown", () => {
+  pressTimer = setTimeout(() => {
+    alert("🎉 Siz yashirin Easter Eggni topdingiz!\n\n\"Ijod hech qachon to‘xtamaydi — hatto kodda ham.\" 💡");
+  }, 5000); // 5 soniya ushlab turish
+});
+logo.addEventListener("mouseup", () => clearTimeout(pressTimer));
+logo.addEventListener("mouseleave", () => clearTimeout(pressTimer));
+</script>
+
+</body>
+</html>
