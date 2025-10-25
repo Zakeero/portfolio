@@ -9,6 +9,54 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    .admin-panel {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.admin-login, .admin-area {
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.admin-panel input, .admin-panel textarea {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.admin-panel button {
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.admin-panel button:hover {
+  background: #ff6a3b;
+}
+
+.hidden { display: none; }
+
     :root {
   --accent: #ef5123;
   --bg: #ffffff;
@@ -104,6 +152,22 @@ nav a:hover::after {
   background: var(--accent);
   color: #fff;
 }
+<!-- === ADMIN PANEL === -->
+<div class="admin-panel" id="adminPanel">
+  <div class="admin-login" id="adminLogin">
+    <h2>Admin panelga kirish</h2>
+    <input type="password" id="adminPass" placeholder="Parolni kiriting">
+    <button id="loginBtn">Kirish</button>
+  </div>
+
+  <div class="admin-area hidden" id="adminArea">
+    <h2>Yangi maqola qo‘shish</h2>
+    <input type="text" id="newTitle" placeholder="Maqola sarlavhasi">
+    <textarea id="newContent" rows="6" placeholder="Maqola matni..."></textarea>
+    <button id="savePost">Saqlash</button>
+    <p id="statusMsg"></p>
+  </div>
+</div>
 
 /* Hero */
 .hero {
@@ -830,9 +894,66 @@ modal.querySelector(".close-btn").addEventListener("click", () => {
   modal.classList.remove("show");
   document.body.style.overflow = "auto";
 });
+    // === ADMIN PANEL ===
+const adminPanel = document.getElementById("adminPanel");
+const login = document.getElementById("adminLogin");
+const area = document.getElementById("adminArea");
+const loginBtn = document.getElementById("loginBtn");
+const passInput = document.getElementById("adminPass");
+const saveBtn = document.getElementById("savePost");
+const statusMsg = document.getElementById("statusMsg");
+
+// 1️⃣ Panelni faollashtirish (masalan, URL’da #admin bo‘lsa)
+if (window.location.hash === "#admin") {
+  adminPanel.style.display = "flex";
+}
+
+// 2️⃣ Kirish paroli (oddiy himoya)
+loginBtn.addEventListener("click", () => {
+  if (passInput.value === "admin123") {
+    login.classList.add("hidden");
+    area.classList.remove("hidden");
+  } else {
+    alert("Parol noto‘g‘ri!");
+  }
+});
+
+// 3️⃣ Maqola qo‘shish
+saveBtn.addEventListener("click", () => {
+  const title = document.getElementById("newTitle").value.trim();
+  const content = document.getElementById("newContent").value.trim();
+
+  if (!title || !content) {
+    statusMsg.textContent = "Iltimos, barcha maydonlarni to‘ldiring.";
+    statusMsg.style.color = "red";
+    return;
+  }
+
+  const posts = JSON.parse(localStorage.getItem("customPosts") || "[]");
+  const newPost = { title, content, date: new Date().toLocaleDateString("uz-UZ") };
+  posts.push(newPost);
+  localStorage.setItem("customPosts", JSON.stringify(posts));
+
+  statusMsg.textContent = "✅ Maqola saqlandi!";
+  statusMsg.style.color = "green";
+  document.getElementById("newTitle").value = "";
+  document.getElementById("newContent").value = "";
+
+  // Avtomatik blogga qo‘shish
+  const blogGrid = document.querySelector(".blog-grid");
+  const article = document.createElement("article");
+  article.innerHTML = `
+    <h3>${newPost.title}</h3>
+    <p>${newPost.content.slice(0, 120)}...</p>
+    <a href="#" class="read-btn">Batafsil o‘qish</a>
+  `;
+  blogGrid.prepend(article);
+});
+
 
   </script>
 </body>
 </html>
+
 
 
