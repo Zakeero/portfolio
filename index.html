@@ -618,28 +618,6 @@ html {
   </div>
 
   <script>
-    // === REAL VAQT ===
-function updateTime() {
-  const now = new Date();
-  const options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
-  const date = now.toLocaleDateString("uz-UZ", options);
-  const time = now.toLocaleTimeString("uz-UZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-  document.getElementById("realTime").textContent = `${time} | ${date}`;
-}
-setInterval(updateTime, 1000);
-updateTime();
-
-// === EASTER EGG ===
-let pressTimer;
-const logo = document.querySelector("header h1");
-logo.addEventListener("mousedown", () => {
-  pressTimer = setTimeout(() => {
-    // 5 soniyadan keyin yashirin xabar chiqadi
-    alert("🔥 Siz yashirin Easter Eggni topdingiz!\n\n\"Ijod hech qachon to‘xtamaydi — hatto kodda ham.\" 🧠");
-  }, 5000); // 5 soniya
-});
-logo.addEventListener("mouseup", () => clearTimeout(pressTimer));
-logo.addEventListener("mouseleave", () => clearTimeout(pressTimer));
 
     // === Scroll bo‘lganda bo‘limlar chiqishi ===
 const sections = document.querySelectorAll("section");
@@ -983,6 +961,7 @@ saveBtn.addEventListener("click", () => {
   </script>
 </body>
 </html>
+
 
 
 
