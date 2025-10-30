@@ -953,9 +953,108 @@ saveBtn.addEventListener("click", () => {
 
 
 
+    <!-- 💬 CHATBOT INTEGRATSIYASI -->
+<div id="chatWindow">
+  <iframe src="chatbot.html" title="SMM Chatbot" id="chatFrame"></iframe>
+  <button id="closeChat">✖</button>
+</div>
+
+<button id="openChat">💬</button>
+
+<style>
+/* Tugma dizayni */
+#openChat {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #ef5123;
+  border: none;
+  color: #fff;
+  font-size: 22px;
+  padding: 14px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+#openChat:hover { transform: scale(1.08); background: #d84c20; }
+
+/* Chat oynasi */
+#chatWindow {
+  position: fixed;
+  bottom: 90px;
+  right: 25px;
+  width: 360px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  display: none;
+  z-index: 9998;
+  background: #fff;
+}
+
+/* Iframe */
+#chatFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+
+/* Yopish tugmasi */
+#closeChat {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+/* 📱 Mobilga moslashuv */
+@media (max-width: 600px) {
+  #chatWindow {
+    width: 90%;
+    height: 70%;
+    right: 5%;
+    bottom: 100px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const openChat = document.getElementById("openChat");
+  const chatWindow = document.getElementById("chatWindow");
+  const closeChat = document.getElementById("closeChat");
+
+  openChat.addEventListener("click", () => {
+    chatWindow.style.display = "block";
+    openChat.style.display = "none";
+  });
+
+  closeChat.addEventListener("click", () => {
+    chatWindow.style.display = "none";
+    openChat.style.display = "block";
+  });
+});
+</script>
+<!-- 💬 /CHATBOT INTEGRATSIYASI -->
+
+  
+
   </script>
 </body>
 </html>
+
 
 
 
