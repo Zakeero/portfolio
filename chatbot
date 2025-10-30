@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bepul SMM Chatbot 🤖</title>
+<style>
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fff7f3;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+.chatbot {
+  width: 360px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  font-size: 15px;
+}
+.chat-header {
+  background: #ef5123;
+  color: #fff;
+  padding: 10px;
+  font-weight: 600;
+  text-align: center;
+}
+.chat-body {
+  height: 280px;
+  overflow-y: auto;
+  padding: 10px;
+}
+.chat-footer {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+.chat-footer input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+}
+.chat-footer button {
+  background: #ef5123;
+  color: #fff;
+  border: none;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.user {
+  text-align: right;
+  margin: 8px 0;
+  color: #111;
+}
+.bot {
+  text-align: left;
+  margin: 8px 0;
+  background: #fff1ed;
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="chatbot">
+  <div class="chat-header">SMM Chatbot 🤖</div>
+  <div class="chat-body" id="chatBody">
+    <div class="bot">Assalomu alaykum! Men sizga SMM bo‘yicha yordam bera olaman 👋</div>
+  </div>
+  <div class="chat-footer">
+    <input type="text" id="userInput" placeholder="Savolingizni yozing...">
+    <button id="sendBtn">Yuborish</button>
+  </div>
+</div>
+
+<script>
+// === JAVOBLAR BAZASI ===
+const knowledge = [
+  { key: ["salom", "assalomu alaykum"], reply: "Salom! 😊 Qanday yordam bera olaman?" },
+  { key: ["smm nima", "smm bu nima"], reply: "SMM — bu ijtimoiy tarmoqlarda marketing yuritish, auditoriya bilan aloqa qilish va brendni rivojlantirish jarayoni." },
+  { key: ["strategiya", "reja"], reply: "SMM strategiya — bu maqsadli auditoriyani aniqlash, kontent reja tuzish va samarali natijani o‘lchash tizimi." },
+  { key: ["narx", "xizmat", "pul"], reply: "SMM xizmatlari narxi loyiha hajmiga bog‘liq. Lekin men bepul maslahat bera olaman 😉" },
+  { key: ["kontent", "post", "idea"], reply: "Kontent — bu sizning brendingiz tili. Har bir post maqsadga yo‘naltirilgan va auditoriyaga mos bo‘lishi kerak." },
+  { key: ["trend", "yangilik"], reply: "2025-yilda asosiy trendlar: qisqa video kontent, shaxsiy brendlar va sun’iy intellekt yordamida tahlil." },
+  { key: ["xayr", "rahmat"], reply: "Rahmat sizga ham 🙏 Ijodingizda omad! Yana yozing, foydali maslahatlarim ko‘p!" }
+];
+
+// === FOYDALI MASLAHATLAR ===
+const tips = [
+  "🎯 Har bir postda bitta asosiy g‘oya bo‘lsin.",
+  "📊 Analitikani har hafta tekshirib boring.",
+  "🧠 SMM — bu sabr va tizimlilik san’ati.",
+  "💡 Storytelling — auditoriyani jalb qilishning eng kuchli usuli.",
+  "🤝 Followerlar bilan muloqot — brendni ishonchli qiladi."
+];
+
+// === CHAT FUNKSIYALARI ===
+const chatBody = document.getElementById("chatBody");
+const userInput = document.getElementById("userInput");
+const sendBtn = document.getElementById("sendBtn");
+
+function appendMessage(sender, text) {
+  const msg = document.createElement("div");
+  msg.className = sender;
+  msg.innerHTML = text;
+  chatBody.appendChild(msg);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+function getReply(userText) {
+  userText = userText.toLowerCase();
+  for (const item of knowledge) {
+    if (item.key.some(k => userText.includes(k))) {
+      return item.reply + "<br><small>" + tips[Math.floor(Math.random()*tips.length)] + "</small>";
+    }
+  }
+  return "Bu savolga hali javobim yo‘q 🤖<br><small>" + tips[Math.floor(Math.random()*tips.length)] + "</small>";
+}
+
+sendBtn.addEventListener("click", () => {
+  const text = userInput.value.trim();
+  if (!text) return;
+  appendMessage("user", "👤 " + text);
+  userInput.value = "";
+  setTimeout(() => appendMessage("bot", getReply(text)), 400);
+});
+
+userInput.addEventListener("keypress", e => {
+  if (e.key === "Enter") sendBtn.click();
+});
+</script>
+
+</body>
+</html>
