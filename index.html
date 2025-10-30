@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="uz">
->
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -952,10 +951,78 @@ saveBtn.addEventListener("click", () => {
   blogGrid.prepend(article);
 });
 
+    <!-- 💬 CHATBOT OYNA -->
+<div id="chatWindow">
+  <iframe src="chatbot.html" title="SMM Chatbot" id="chatFrame"></iframe>
+  <button id="closeChat">✖</button>
+</div>
+
+<!-- 💬 TUGMA -->
+<button id="openChat">💬</button>
+
+<style>
+#openChat {
+  position: fixed;
+  bottom: 25px; right: 25px;
+  background: #ef5123;
+  border: none; color: #fff;
+  font-size: 20px;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+#openChat:hover { transform: scale(1.05); }
+
+#chatWindow {
+  position: fixed;
+  bottom: 90px; right: 25px;
+  width: 360px; height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 9999;
+}
+#chatFrame {
+  width: 100%; height: 100%;
+  border: none;
+}
+#closeChat {
+  position: absolute;
+  top: 5px; right: 8px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 25px; height: 25px;
+  font-size: 14px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+const openChat = document.getElementById("openChat");
+const chatWindow = document.getElementById("chatWindow");
+const closeChat = document.getElementById("closeChat");
+
+openChat.addEventListener("click", () => {
+  chatWindow.style.display = "block";
+  openChat.style.display = "none";
+});
+
+closeChat.addEventListener("click", () => {
+  chatWindow.style.display = "none";
+  openChat.style.display = "block";
+});
+</script>
+
 
   </script>
 </body>
 </html>
+
 
 
 
