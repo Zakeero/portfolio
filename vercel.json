@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.s-zokirov.uz" }], "destination": "https://www.s-zakirov.uz/:path*", "permanent": true },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "s-zokirov.uz" }], "destination": "https://www.s-zakirov.uz/:path*", "permanent": true },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "smm-shuxratjon.uz" }], "destination": "https://www.s-zakirov.uz/:path*", "permanent": true },
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.smm-shuxratjon.uz" }], "destination": "https://www.s-zakirov.uz/:path*", "permanent": true }
+  ]
+}
