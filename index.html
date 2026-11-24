@@ -209,6 +209,18 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   .tabs{display:flex}
   .tabs button{flex:1;text-align:center}
 }
+
+/* partners */
+.partners{padding-bottom:90px}
+.marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;gap:16px;width:max-content;animation:scroll 50s linear infinite}
+.track .dup{display:flex;gap:16px}
+.marquee:hover .track{animation-play-state:paused}
+.logo-tile{flex:none;width:190px;height:112px;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:16px 20px;overflow:hidden}
+.logo-tile img{max-width:100%;max-height:100%;object-fit:contain}
+@keyframes scroll{to{transform:translateX(calc(-50% - 8px))}}
+@media (prefers-reduced-motion:reduce){.track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.track .dup{display:none}.marquee{mask-image:none}}
+@media (max-width:900px){.logo-tile{width:150px;height:92px;padding:12px 16px}.track{animation-duration:35s}}
 </style>
 </head>
 <body>
@@ -254,6 +266,19 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="stat"><b>10+</b><span>bot va sayt ishga tushirilgan</span></div>
   </div>
 </div>
+
+
+<section id="hamkorlar" class="partners">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Hamkorlikda ishlagan loyihalar</h2>
+      <p>Ta’lim, moliya, sog‘liq va xizmat ko‘rsatish sohalaridagi brendlar.</p>
+    </div>
+  </div>
+  <div class="marquee rv" aria-label="Hamkorlar logotiplari">
+    <div class="track"><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/registon.webp" alt="Registon o‘quv markazi" loading="lazy" width="480" height="125"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/aloqabank.webp" alt="AloqaBank" loading="lazy" width="480" height="82"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/samisi.webp" alt="Samarqand iqtisodiyot va servis instituti" loading="lazy" width="225" height="225"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/dr-akbarshoh.webp" alt="Dr. Akbarshoh" loading="lazy" width="480" height="87"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/yevro-pro-assist.webp" alt="Yevro Pro Assist" loading="lazy" width="258" height="240"></div><div class="logo-tile" style="background:#0b182a"><img src="assets/logos/bizexpert.webp" alt="Bizexpert" loading="lazy" width="229" height="58"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/kontent-markazi.webp" alt="Kontent markazi" loading="lazy" width="345" height="115"></div><div class="logo-tile" style="background:#000000"><img src="assets/logos/imkonly.webp" alt="Imkonly" loading="lazy" width="240" height="240"></div><div class="logo-tile" style="background:#0d2336"><img src="assets/logos/texnomuxlis.webp" alt="Texnomuxlis" loading="lazy" width="240" height="240"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/bookblog.webp" alt="Bookblog" loading="lazy" width="306" height="240"></div><div class="logo-tile" style="background:#0d0e32"><img src="assets/logos/maroqand-quiz.webp" alt="MaroqAndQuiz" loading="lazy" width="240" height="240"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/dad.webp" alt="DAD" loading="lazy" width="94" height="42"></div><div class="logo-tile" style="background:#0b74d4"><img src="assets/logos/registon-blue.webp" alt="Registon" loading="lazy" width="240" height="240"></div><div class="dup" aria-hidden="true"><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/registon.webp" alt="Registon o‘quv markazi" loading="lazy" width="480" height="125"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/aloqabank.webp" alt="AloqaBank" loading="lazy" width="480" height="82"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/samisi.webp" alt="Samarqand iqtisodiyot va servis instituti" loading="lazy" width="225" height="225"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/dr-akbarshoh.webp" alt="Dr. Akbarshoh" loading="lazy" width="480" height="87"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/yevro-pro-assist.webp" alt="Yevro Pro Assist" loading="lazy" width="258" height="240"></div><div class="logo-tile" style="background:#0b182a"><img src="assets/logos/bizexpert.webp" alt="Bizexpert" loading="lazy" width="229" height="58"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/kontent-markazi.webp" alt="Kontent markazi" loading="lazy" width="345" height="115"></div><div class="logo-tile" style="background:#000000"><img src="assets/logos/imkonly.webp" alt="Imkonly" loading="lazy" width="240" height="240"></div><div class="logo-tile" style="background:#0d2336"><img src="assets/logos/texnomuxlis.webp" alt="Texnomuxlis" loading="lazy" width="240" height="240"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/bookblog.webp" alt="Bookblog" loading="lazy" width="306" height="240"></div><div class="logo-tile" style="background:#0d0e32"><img src="assets/logos/maroqand-quiz.webp" alt="MaroqAndQuiz" loading="lazy" width="240" height="240"></div><div class="logo-tile" style="background:#ffffff"><img src="assets/logos/dad.webp" alt="DAD" loading="lazy" width="94" height="42"></div><div class="logo-tile" style="background:#0b74d4"><img src="assets/logos/registon-blue.webp" alt="Registon" loading="lazy" width="240" height="240"></div></div></div>
+  </div>
+</section>
 
 <section id="xizmatlar">
   <div class="wrap">
@@ -331,7 +356,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   <div class="wrap">
     <div class="sec-head rv">
       <h2>Tanlangan keyslar</h2>
-      <p>Registon o‘quv markazi bilan qilingan ishlar.</p>
+      <p>Vazifa va qilingan ish.</p>
     </div>
     <article class="case rv">
       <div class="tag"><b>Registon LC</b>Ta’lim markazi · 50+ filial</div>
