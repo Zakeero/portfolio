@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"Shuxratjon Zokirov — SMM xizmatlari","url":"https://s-zokirov.uz/","telephone":"+998907490870","address":{"@type":"PostalAddress","addressLocality":"Samarqand","addressCountry":"UZ"},"founder":{"@type":"Person","name":"Shuxratjon Zokirov"},"sameAs":["https://t.me/s_zokirov","https://t.me/kopirayting_pro"]}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"Shuxratjon Zokirov — SMM xizmatlari","url":"https://s-zokirov.uz/","telephone":"+998200205644","address":{"@type":"PostalAddress","addressLocality":"Samarqand","addressCountry":"UZ"},"founder":{"@type":"Person","name":"Shuxratjon Zokirov"},"sameAs":["https://t.me/s_zokirov","https://t.me/kopirayting_pro"]}
 </script>
 <style>
 :root{
@@ -28,7 +28,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-html,body{overflow-x:hidden}
+body{overflow-x:clip}
 body{background:var(--bg);color:var(--text);font:400 17px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
@@ -41,8 +41,8 @@ section{padding:110px 0;border-top:1px solid var(--line)}
 .sec-head p{color:var(--muted);max-width:380px}
 
 /* nav */
-nav{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-nav.solid{background:rgba(255,255,255,.88);backdrop-filter:blur(12px);border-color:var(--line)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:box-shadow .3s}
+nav.solid{box-shadow:0 8px 30px -18px rgba(13,18,32,.35)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
 .logo{font:800 18px Manrope,sans-serif;letter-spacing:-.02em}
 .logo span{color:var(--accent)}
@@ -70,8 +70,9 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#3ecf6e;margin-right:8px;box-shadow:0 0 0 4px rgba(62,207,110,.15)}
 
 .hero{position:relative}
-body::before{content:"";position:absolute;top:-200px;right:-200px;width:900px;height:900px;background:radial-gradient(closest-side,rgba(36,83,255,.13),transparent);pointer-events:none;z-index:-1}
-body::after{content:"";position:absolute;top:300px;left:-300px;width:800px;height:800px;background:radial-gradient(closest-side,rgba(255,176,32,.12),transparent);pointer-events:none;z-index:-1}
+.bg-blobs{position:absolute;top:0;left:0;right:0;height:1400px;overflow:hidden;pointer-events:none;z-index:-1}
+.bg-blobs::before{content:"";position:absolute;top:-200px;right:-200px;width:900px;height:900px;background:radial-gradient(closest-side,rgba(36,83,255,.13),transparent);pointer-events:none;z-index:-1}
+.bg-blobs::after{content:"";position:absolute;top:300px;left:-300px;width:800px;height:800px;background:radial-gradient(closest-side,rgba(255,176,32,.12),transparent);pointer-events:none;z-index:-1}
 #tariflar,#jarayon{background:var(--bg2)}
 .stats{background:#fff;border-radius:20px;border:1px solid var(--line);box-shadow:0 20px 50px -30px rgba(13,18,32,.25);overflow:hidden}
 .btn-accent{box-shadow:0 10px 24px -10px rgba(36,83,255,.6)}
@@ -233,9 +234,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 @keyframes scroll{to{transform:translateX(calc(-50% - 8px))}}
 @media (prefers-reduced-motion:reduce){.track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.track .dup{display:none}.marquee{mask-image:none}}
 @media (max-width:900px){.logo-tile{width:150px;height:92px;padding:12px 16px}.track{animation-duration:35s}}
+
+/* floating contact */
+.fab{position:fixed;right:20px;bottom:24px;z-index:60;display:flex;flex-direction:column;gap:12px}
+.fab-btn{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 12px 28px -8px rgba(13,18,32,.45);transition:transform .2s}
+.fab-btn:hover{transform:scale(1.08)}
+.fab-tg{background:#229ED9}
+.fab-ph{background:#16a34a}
+.fab-tg::after{content:"";position:absolute;width:58px;height:58px;border-radius:50%;border:2px solid #229ED9;animation:pulse 2s infinite}
+.fab-btn{position:relative}
+@keyframes pulse{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.5);opacity:0}}
+@media (prefers-reduced-motion:reduce){.fab-tg::after{animation:none;display:none}}
+@media (max-width:900px){footer{padding-bottom:96px}.fab{right:14px;bottom:16px}.fab-btn{width:52px;height:52px}.fab-tg::after{width:52px;height:52px}}
 </style>
 </head>
 <body>
+<div class="bg-blobs" aria-hidden="true"></div>
 
 <nav id="nav">
   <div class="wrap">
@@ -255,7 +269,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
   <div class="rv">
     <p class="eyebrow">SMM · Telegram Ads · Kopirayting</p>
     <h1>Ijtimoiy tarmoqlaringizni <em>sotuv kanaliga</em> aylantiraman</h1>
-    <p class="lead">Biznes, o‘quv markaz va shaxsiy brendlar uchun <b>Telegram reklama</b>, <b>kanal yuritish</b> va <b>SMM menejerligi</b>. Strategiyadan oylik hisobotgacha bitta mutaxassis.</p>
+    <p class="lead">Biznes, o‘quv markaz va shaxsiy brendlar uchun <b>Telegram reklamasi</b>, <b>kanal yuritish</b> va <b>SMM menejerligi</b>. Strategiyadan oylik hisobotgacha bitta mutaxassis.</p>
     <div class="cta-row">
       <a href="https://t.me/sies_admin" class="btn btn-accent" target="_blank" rel="noopener">Bepul konsultatsiya olish →</a>
       <a href="#tariflar" class="btn btn-ghost">Narxlarni ko‘rish</a>
@@ -272,10 +286,10 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
 <div class="wrap">
   <div class="stats rv">
-    <div class="stat"><b>4+</b><span>yil kopiraytingda</span></div>
-    <div class="stat"><b>3+</b><span>yil SMMda</span></div>
-    <div class="stat"><b>50+</b><span>filialli brend bilan ishlash</span></div>
-    <div class="stat"><b>800+</b><span>o‘quvchi SMM va AI bo‘yicha o‘qitildi</span></div>
+    <div class="stat"><b>4+</b><span>yillik kopirayting tajribasi</span></div>
+    <div class="stat"><b>3+</b><span>yillik SMM tajribasi</span></div>
+    <div class="stat"><b>50+</b><span>filialli brend bilan hamkorlik</span></div>
+    <div class="stat"><b>800+</b><span>o‘quvchi SMM va AI asoslarini o‘rgandi</span></div>
   </div>
 </div>
 
@@ -302,16 +316,16 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 
       <div class="card rv">
         <div class="num">01 · Telegram Ads</div>
-        <h3>Performance reklama</h3>
+        <h3>Natijaga yo‘naltirilgan reklama</h3>
         <p class="for">Kichik, o‘rta va yirik biznes hamda kanaliga auditoriya yig‘moqchi bo‘lgan adminlar uchun.</p>
         <ul class="checks">
           <li>Reklama strategiyasi</li>
           <li>Kreativlarni ishlab chiqish</li>
-          <li>Reklamani yoqib berish va boshqarish</li>
+          <li>Reklamani ishga tushirish va boshqarish</li>
           <li>Natijalar bo‘yicha hisobot</li>
           <li>Kanalni sotuvga tayyorlash bo‘yicha konsultatsiya</li>
         </ul>
-        <div class="price"><div><small>Narx</small><b>byudjetning 12–25%</b></div><a href="https://t.me/sies_admin" class="link" target="_blank" rel="noopener">Hisoblab berish →</a></div>
+        <div class="price"><div><small>Narx</small><b>Reklama byudjetining 12–25%</b></div><a href="https://t.me/sies_admin" class="link" target="_blank" rel="noopener">Hisoblab berish →</a></div>
       </div>
 
       <div class="card rv">
@@ -338,9 +352,9 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
         <h3>Sotadigan matnlar</h3>
         <p class="for">Barcha yo‘nalishlar uchun. Narx va muddat matn turiga qarab kelishiladi.</p>
         <ul>
-          <li>Telegram post</li><li>Reklama posti</li><li>Reels va Shorts ssenariysi</li><li>YouTube video ssenariysi</li><li>Podkast ssenariysi</li><li>Landing page matni</li><li>UI/UX kopirayting</li><li>Tijoriy taklif</li><li>Brend kommunikatsiya strategiyasi</li>
+          <li>Telegram postlari</li><li>Reklama postlari</li><li>Reels va Shorts ssenariylari</li><li>YouTube video ssenariylari</li><li>Podkast ssenariylari</li><li>Landing sahifa matni</li><li>UI/UX kopirayting</li><li>Tijoriy taklif matni</li><li>Brend uchun kommunikatsiya strategiyasi</li>
         </ul>
-        <div class="price"><div><small>Narx</small><b>Kelishiladi</b></div><a href="https://t.me/sies_admin" class="link" target="_blank" rel="noopener">Vazifani yuborish →</a></div>
+        <div class="price"><div><small>Narx</small><b>Kelishuv asosida</b></div><a href="https://t.me/sies_admin" class="link" target="_blank" rel="noopener">Vazifani yuborish →</a></div>
       </div>
 
     </div>
@@ -359,8 +373,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     </div>
     <p class="tab-note" id="note-online">Masofadan ishlayman. Strategiya, kontent, dizayn va ssenariylar men tomondan.</p>
     <p class="tab-note hidden" id="note-offline">Ofisingiz yoki biznes obyektingizda ishlayman. Suratga olish va video montaj tarifga kiradi.</p>
-    <div class="plans" id="plans-online"><div class="plan"><h3>START</h3><div class="amt">3 mln</div><div class="per">so‘m / oyiga</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kontent reja</li><li>Kopirayting</li><li>Dizayn: 12 ta</li><li>Reels ssenariylari: 4 ta</li><li>Stories: 15 ta</li><li>Joylashtirish</li><li>Analitika: oddiy</li><li class="off">Raqobatchilar tahlili</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">START tarifini tanlash</a></div><div class="plan hot"><span class="pill">Tavsiya etiladi</span><h3>BUSINESS</h3><div class="amt">5 mln</div><div class="per">so‘m / oyiga</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kontent reja</li><li>Kopirayting</li><li>Dizayn: 20 ta</li><li>Reels ssenariylari: 8 ta</li><li>Stories: 25 ta</li><li>Joylashtirish</li><li>Analitika: to‘liq</li><li>Raqobatchilar tahlili</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-accent" target="_blank" rel="noopener">BUSINESS tarifini tanlash</a></div><div class="plan"><h3>PREMIUM</h3><div class="amt">7 mln</div><div class="per">so‘m / oyiga</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kontent reja</li><li>Kopirayting</li><li>Dizayn: 30 ta</li><li>Reels ssenariylari: 12 ta</li><li>Stories: 30 ta</li><li>Joylashtirish</li><li>Analitika: to‘liq</li><li>Raqobatchilar tahlili</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">PREMIUM tarifini tanlash</a></div></div>
-    <div class="plans hidden" id="plans-offline"><div class="plan"><h3>START</h3><div class="amt">5 mln</div><div class="per">so‘m / oyiga</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kopirayting</li><li>Dizayn: 12 ta</li><li>Reels: 4 ta</li><li>Stories: 15 ta</li><li>Suratga olish: 1 kun</li><li>Video montaj</li><li>Joylashtirish</li><li>Analitika</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">START tarifini tanlash</a></div><div class="plan hot"><span class="pill">Tavsiya etiladi</span><h3>BUSINESS</h3><div class="amt">8 mln</div><div class="per">so‘m / oyiga</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kopirayting</li><li>Dizayn: 20 ta</li><li>Reels: 8 ta</li><li>Stories: 25 ta</li><li>Suratga olish: 2 kun</li><li>Video montaj</li><li>Joylashtirish</li><li>Analitika</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-accent" target="_blank" rel="noopener">BUSINESS tarifini tanlash</a></div><div class="plan"><h3>PREMIUM</h3><div class="amt">12 mln</div><div class="per">so‘m / oyiga</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kopirayting</li><li>Dizayn: 30 ta</li><li>Reels: 12 ta</li><li>Stories: 30 ta</li><li>Suratga olish: 4 kun</li><li>Video montaj</li><li>Joylashtirish</li><li>Analitika</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">PREMIUM tarifini tanlash</a></div></div>
+    <div class="plans" id="plans-online"><div class="plan"><h3>START</h3><div class="amt">3 mln</div><div class="per">so‘m / oy</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kontent reja</li><li>Kopirayting</li><li>Dizayn: 12 ta</li><li>Reels ssenariylari: 4 ta</li><li>Stories: 15 ta</li><li>Joylashtirish</li><li>Analitika: oddiy</li><li class="off">Raqobatchilar tahlili</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">START tarifini tanlash</a></div><div class="plan hot"><span class="pill">Tavsiya etiladi</span><h3>BUSINESS</h3><div class="amt">5 mln</div><div class="per">so‘m / oy</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kontent reja</li><li>Kopirayting</li><li>Dizayn: 20 ta</li><li>Reels ssenariylari: 8 ta</li><li>Stories: 25 ta</li><li>Joylashtirish</li><li>Analitika: to‘liq</li><li>Raqobatchilar tahlili</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-accent" target="_blank" rel="noopener">BUSINESS tarifini tanlash</a></div><div class="plan"><h3>PREMIUM</h3><div class="amt">7 mln</div><div class="per">so‘m / oy</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kontent reja</li><li>Kopirayting</li><li>Dizayn: 30 ta</li><li>Reels ssenariylari: 12 ta</li><li>Stories: 30 ta</li><li>Joylashtirish</li><li>Analitika: to‘liq</li><li>Raqobatchilar tahlili</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">PREMIUM tarifini tanlash</a></div></div>
+    <div class="plans hidden" id="plans-offline"><div class="plan"><h3>START</h3><div class="amt">5 mln</div><div class="per">so‘m / oy</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kopirayting</li><li>Dizayn: 12 ta</li><li>Reels: 4 ta</li><li>Stories: 15 ta</li><li>Suratga olish: 1 kun</li><li>Video montaj</li><li>Joylashtirish</li><li>Analitika</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">START tarifini tanlash</a></div><div class="plan hot"><span class="pill">Tavsiya etiladi</span><h3>BUSINESS</h3><div class="amt">8 mln</div><div class="per">so‘m / oy</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kopirayting</li><li>Dizayn: 20 ta</li><li>Reels: 8 ta</li><li>Stories: 25 ta</li><li>Suratga olish: 2 kun</li><li>Video montaj</li><li>Joylashtirish</li><li>Analitika</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-accent" target="_blank" rel="noopener">BUSINESS tarifini tanlash</a></div><div class="plan"><h3>PREMIUM</h3><div class="amt">12 mln</div><div class="per">so‘m / oy</div><ul class="checks"><li>Marketing strategiya</li><li>Kontent strategiya</li><li>Kopirayting</li><li>Dizayn: 30 ta</li><li>Reels: 12 ta</li><li>Stories: 30 ta</li><li>Suratga olish: 4 kun</li><li>Video montaj</li><li>Joylashtirish</li><li>Analitika</li><li>Oylik hisobot</li></ul><a href="https://t.me/sies_admin" class="btn btn-ghost" target="_blank" rel="noopener">PREMIUM tarifini tanlash</a></div></div>
   </div>
 </section>
 
@@ -373,7 +387,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <article class="case rv">
       <div class="tag"><b>AloqaBank × Kontent markazi</b>Ta’lim loyihasi · Samarqand</div>
       <h3>800+ o‘quvchiga SMM va AI asoslari</h3>
-      <div class="what"><strong>Vazifa:</strong> Samarqand yoshlariga SMM va sun’iy intellekt bo‘yicha amaliy bilim berish. <strong>Ish:</strong> AloqaBank va Kontent markazi bilan hamkorlikda SMM va AI asoslari bo‘yicha darslar o‘tildi.
+      <div class="what"><strong>Vazifa:</strong> Samarqand yoshlariga SMM va sun’iy intellekt bo‘yicha amaliy bilim berish. <strong>Ish:</strong> AloqaBank va Kontent markazi bilan hamkorlikda SMM va AI asoslari bo‘yicha darslar o‘tkazildi.
         <div class="res">Natija: 800+ o‘quvchi o‘qitildi</div></div>
     </article>
     <article class="case rv">
@@ -385,22 +399,22 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <article class="case rv">
       <div class="tag"><b>Registon LC</b>Ta’lim markazi · 50+ filial</div>
       <h3>12 oylik Telegram strategiyasi</h3>
-      <div class="what"><strong>Vazifa:</strong> asosiy kanal va Samarqand filiali uchun tizimli marketing. <strong>Ish:</strong> SWOT, mijoz portretlari, kontent taqsimoti, reklama benchmarklari, KPI va 30 kunlik kalendar.</div>
+      <div class="what"><strong>Vazifa:</strong> asosiy kanal va Samarqand filiali uchun tizimli marketing. <strong>Ish:</strong> SWOT, mijoz portretlari, kontent taqsimoti, reklama benchmarklari, KPI va 30 kunlik kontent kalendar.</div>
     </article>
     <article class="case rv">
       <div class="tag"><b>Registon LC</b>Telegram · AI</div>
       <h3>Izohlarga javob beruvchi AI bot</h3>
-      <div class="what"><strong>Vazifa:</strong> izohlarga tez javob va spamni tozalash. <strong>Ish:</strong> o‘zbekcha izohlarga AI javob, narx so‘ralganda menejerni belgilash, spamni o‘chirish.</div>
+      <div class="what"><strong>Vazifa:</strong> izohlarga tez javob va spamni tozalash. <strong>Ish:</strong> o‘zbekcha izohlarga AI orqali javob, narx so‘ralganda menejerni belgilash, spamni o‘chirish.</div>
     </article>
     <article class="case rv">
       <div class="tag"><b>Registon LC</b>Maxsus loyiha</div>
       <h3>«Ustozlar kuni» ovoz berish loyihasi</h3>
-      <div class="what"><strong>Vazifa:</strong> ustozlarni taqdirlash va kanalni o‘stirish. <strong>Ish:</strong> Telegram bot, sayt va admin panel, kanalga obuna sharti va referal ovozlar.</div>
+      <div class="what"><strong>Vazifa:</strong> ustozlarni taqdirlash va kanalni o‘stirish. <strong>Ish:</strong> Telegram bot, sayt va admin panel. Ovoz berish uchun kanalga obuna sharti va referal tizimi.</div>
     </article>
     <article class="case rv">
       <div class="tag"><b>Registon LC</b>Lead generatsiya</div>
       <h3>Kasb tanlash quiz sayti</h3>
-      <div class="what"><strong>Vazifa:</strong> abituriyentlardan kontakt olish. <strong>Ish:</strong> 227 yo‘nalishli test, natija Telegram’ga lead bo‘lib tushadi.</div>
+      <div class="what"><strong>Vazifa:</strong> abituriyentlardan kontakt olish. <strong>Ish:</strong> 227 ta yo‘nalish bo‘yicha test, natija Telegram’ga lead sifatida tushadi.</div>
     </article>
   </div>
 </section>
@@ -414,8 +428,8 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="steps">
       <div class="step rv"><h3>Konsultatsiya</h3><p>Biznesingiz va maqsadingizni bilib olaman. Bepul.</p></div>
       <div class="step rv"><h3>Taklif</h3><p>Mos xizmat yoki tarif, muddat va narxni aniq aytaman.</p></div>
-      <div class="step rv"><h3>Ish</h3><p>Strategiya, kontent va reklama reja asosida ishlaydi.</p></div>
-      <div class="step rv"><h3>Hisobot</h3><p>Har oy raqamlar va keyingi oy uchun reja.</p></div>
+      <div class="step rv"><h3>Ish</h3><p>Strategiya asosida kontent va reklamani ishga tushiraman.</p></div>
+      <div class="step rv"><h3>Hisobot</h3><p>Har oy natijalar hisoboti va keyingi oy rejasi.</p></div>
     </div>
   </div>
 </section>
@@ -425,7 +439,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
     <div class="sec-head rv"><h2>Ko‘p so‘raladigan savollar</h2></div>
     <div class="faq rv">
       <details><summary>Online va offline SMM farqi nimada?</summary><p>Online formatda ijtimoiy tarmoqlaringizni masofadan boshqaraman. Offline formatda ofisingiz yoki biznes obyektingizda ishlayman, suratga olish va video montaj tarifga kiradi.</p></details>
-      <details><summary>Telegram Ads narxi qanday hisoblanadi?</summary><p>Xizmat narxi reklama byudjetining 12% dan 25% gacha qismini tashkil qiladi. Foiz byudjet hajmi va loyiha murakkabligiga qarab belgilanadi. Reklama byudjetining o‘zi alohida.</p></details>
+      <details><summary>Telegram Ads narxi qanday hisoblanadi?</summary><p>Xizmat narxi reklama byudjetining 12%dan 25%gacha qismini tashkil qiladi. Foiz byudjet hajmi va loyiha murakkabligiga qarab belgilanadi. Reklama byudjeti xizmat narxiga kirmaydi.</p></details>
       <details><summary>Kanal yuritish uchun shartnoma qancha muddatga tuziladi?</summary><p>3 oydan 1 yilgacha. Oylik narx 2 mln so‘mdan 6 mln so‘mgacha, vazifalar hajmiga qarab.</p></details>
       <details><summary>Qaysi sohalar bilan ishlaysiz?</summary><p>Barcha turdagi biznes, o‘quv markazlari, korxonalar va shaxsiy brendlar bilan.</p></details>
       <details><summary>Qaysi xizmat menga kerakligini bilmasam-chi?</summary><p>Telegram’ga yozing. Bepul konsultatsiyada vaziyatingizni ko‘rib, mos variantni aytaman.</p></details>
@@ -444,13 +458,23 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
       <a href="https://t.me/sies_admin" class="btn" target="_blank" rel="noopener">Telegram’da yozish →</a>
     </div>
     <div class="contact-row rv">
-      <div class="contact-item"><span>Telefon</span><a href="tel:+998907490870">+998 90 749 08 70</a></div>
+      <div class="contact-item"><span>Telefon</span><a href="tel:+998200205644">+998 20 020 56 44</a></div>
       <div class="contact-item"><span>Telegram</span><a href="https://t.me/sies_admin" target="_blank" rel="noopener">@sies_admin</a></div>
       <div class="contact-item"><span>Blog</span><a href="https://t.me/s_zokirov" target="_blank" rel="noopener">@s_zokirov</a></div>
       <div class="contact-item"><span>Portfolio kanal</span><a href="https://t.me/kopirayting_pro" target="_blank" rel="noopener">@kopirayting_pro</a></div>
     </div>
   </div>
 </section>
+
+
+<div class="fab" aria-label="Tezkor aloqa">
+  <a href="https://t.me/sies_admin" class="fab-btn fab-tg" target="_blank" rel="noopener" aria-label="Telegram: @sies_admin">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.5 2.8c.9-.3 1.7.2 1.4 1.5z"/></svg>
+  </a>
+  <a href="tel:+998200205644" class="fab-btn fab-ph" aria-label="Qo‘ng‘iroq: +998 20 020 56 44">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+  </a>
+</div>
 
 <footer>
   <div class="wrap">
